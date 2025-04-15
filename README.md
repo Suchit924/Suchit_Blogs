@@ -53,6 +53,7 @@ flask run
 You can now visit http://127.0.0.1:5000 to see your application in action.
 ```
 ## Project Structure
+```bash
 Suchit_Blogs/
 │
 ├── app/              # Main application files
