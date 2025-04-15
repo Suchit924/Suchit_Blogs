@@ -2,7 +2,6 @@ from datetime import date
 from flask import Flask, abort, render_template, redirect, url_for, flash, request
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor
-from flask_gravatar import Gravatar
 from flask_login import UserMixin, login_user, LoginManager, current_user, logout_user
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship, DeclarativeBase, Mapped, mapped_column
@@ -33,14 +32,15 @@ def load_user(user_id):
 
 
 # For adding profile images to the comment section
-gravatar = Gravatar(app,
-                    size=100,
-                    rating='g',
-                    default='retro',
-                    force_default=False,
-                    force_lower=False,
-                    use_ssl=False,
-                    base_url=None)
+import hashlib
+
+def gravatar_url(email, size=100, default="retro", rating="g"):
+    email_clean = email.strip().lower().encode('utf-8')
+    email_hash = hashlib.md5(email_clean).hexdigest()
+    return f"https://www.gravatar.com/avatar/{email_hash}?s={size}&d={default}&r={rating}"
+# Make this function available in all Jinja templates
+app.jinja_env.globals['gravatar_url'] = gravatar_url
+
 
 # CREATE DATABASE
 class Base(DeclarativeBase):
