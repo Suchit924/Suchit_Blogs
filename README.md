@@ -30,9 +30,8 @@ You can view the live website at:
 ## Setup Instructions
 
 To run this project locally, follow the steps below.
-
-1. Clone the repository
 ```bash
+1. Clone the repository
 git clone https://github.com/Suchit924/Suchit_Blogs.git
 cd Suchit_Blogs
 
@@ -52,7 +51,7 @@ DB_URI: Provide your PostgreSQL database URI.
 5. Run the application
 flask run
 You can now visit http://127.0.0.1:5000 to see your application in action.
-
+```
 ## Project Structure
 Suchit_Blogs/
 │
